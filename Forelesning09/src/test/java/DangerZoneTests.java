@@ -21,4 +21,17 @@ public class DangerZoneTests {
                 () -> dangerZone.killSwitch(true)
         );
     }
+
+    /*
+    Denne enhetstesten kontrollerer at the ikke blir kastet noen form for exception.
+    For dette kan vi benytte assertDoesNotThrow(), som krever en executable som parameter. Som forklart ved enhetstesten
+    over kan vi gjøre dette ved å skrive et lambda-utrykk.
+     */
+    @Test
+    @DisplayName("Kill switch is set to false and spares the program from harm")
+    public void killSwitchFalse() {
+        DangerZone dangerZone = new DangerZone();
+
+        Assertions.assertDoesNotThrow( () -> dangerZone.killSwitch(false) );
+    }
 }
