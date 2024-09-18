@@ -36,6 +36,18 @@ public class InformationCheckerTests {
         Assertions.assertEquals(0, result2);
     }
 
-    
+    @Test
+    @DisplayName("Age is greater than accepted range")
+    public void controlAgeGreaterThanAcceptedRange() {
+        InformationChecker informationChecker = new InformationChecker();
+
+        int result = informationChecker.controlAge(300);
+        int result2 = informationChecker.controlAge(121);
+        int result3 = informationChecker.controlAge(Integer.MAX_VALUE);
+
+        Assertions.assertEquals(120, result);
+        Assertions.assertEquals(120, result2);
+        Assertions.assertEquals(120, result3);
+    }
 
 }
