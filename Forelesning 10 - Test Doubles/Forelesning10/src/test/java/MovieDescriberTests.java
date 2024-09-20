@@ -34,4 +34,15 @@ public class MovieDescriberTests {
 
     }
 
+    @Test
+    @DisplayName("Describe movie not found")
+    public void describeMovieNotFound() {
+        MovieDescriber movieDescriber = new MovieDescriber(mockMovieRepo);
+        Mockito.when(movieDescriber.describeMovie(Mockito.anyString())).thenReturn(null);
+
+        String result = movieDescriber.describeMovie("Bingus");
+
+        Assertions.assertEquals("The movie could not be found.", result);
+    }
+
 }
