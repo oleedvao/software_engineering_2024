@@ -37,7 +37,10 @@ public class MovieDescriberTests {
 
     /*
     Vi ser her at vi forfalsker betingede kall på mockMovieRepo.getMovieByTitle(), mockMovie.getTitle() og
-    mockMovie.getRunTimeInMinutes().
+    mockMovie.getRunTimeInMinutes(), som alle blir kalt som en del av enheten vi tester (movieDescriber.describeMovie())
+    På den måten antar vi både at movieDescriber-objektet får et gyldig Movie-objekt og at det objektet inneholder
+    riktig informasjon for navn og runtime. Dermed vil testen nå bare avhenge av koden som er direkte innehold i
+    MovieDescriber sin metode describeMovie().
      */
     @Test
     @DisplayName("Describe movie")
@@ -55,6 +58,9 @@ public class MovieDescriberTests {
 
     }
 
+    /*
+    
+     */
     @Test
     @DisplayName("Describe movie not found")
     public void describeMovieNotFound() {
