@@ -26,28 +26,36 @@ public class MockingFunctionalityTests {
     den gi X som returverdi". Dette hva vi ser definert med Mockito.when() og Mockito.doReturn.
     Vi kan også verifisere bruk av metoder i et mock-objekt, slikt som om en metode blir kalt, hvor mange ganger,
     rekkefølge av metode-kall osv. Dette er hva vi sjekker med Mockito.verify().
-
-     */
+    Det finnes veldig mange måter å både definere betingelser, samt å verifisere. Bruk google når dere trenger større
+    innsikt enn dette enkle eksemplet gir.
+    */
     @Test
     @DisplayName("Demonstrate mocking functionality")
     public void mockingFunctionality() {
 
+        // --Arrange--
         //Calculator calculator = new Calculator();
         //Calculator mockCalculator = Mockito.mock(Calculator.class);
+
         Mockito.when(mockCalculator.addition(2, 5)).thenReturn(7);
+
         //Mockito.when(mockCalculator.addition(10, 10)).thenReturn(20);
         //Alternativ måte å definere betingelse og returverdi:
         Mockito.doReturn(20).when(mockCalculator).addition(10, 10);
 
+
+        // --Act--
         int result = mockCalculator.addition(2, 5);
         int result2 = mockCalculator.addition(10, 10);
 
+
+        // --Assert--
         Assertions.assertEquals(7, result);
         Assertions.assertEquals(20, result2);
+
         Mockito.verify(mockCalculator).addition(2, 5);
         Mockito.verify(mockCalculator, Mockito.times(2))
                 .addition(Mockito.anyInt(), Mockito.anyInt());
-
 
     }
 
