@@ -36,39 +36,51 @@ public class MovieDescriberTests {
 
 
     /*
-    Vi ser her at vi forfalsker betingede kall på mockMovieRepo.getMovieByTitle(), mockMovie.getTitle() og
+    Denne enhetstesten sjekker at vi kan beskrive et Movie-objekt under antagelse av at vi får et riktig Movie-objekt
+    med riktig informasjon.
+    Vi ser at vi forfalsker betingede kall på mockMovieRepo.getMovieByTitle(), mockMovie.getTitle() og
     mockMovie.getRunTimeInMinutes(), som alle blir kalt som en del av enheten vi tester (movieDescriber.describeMovie())
-    På den måten antar vi både at movieDescriber-objektet får et gyldig Movie-objekt og at det objektet inneholder
-    riktig informasjon for navn og runtime. Dermed vil testen nå bare avhenge av koden som er direkte innehold i
-    MovieDescriber sin metode describeMovie().
+    På den måten antar vi både at movieDescriber-objektet får et gyldig Movie-objekt fra MovieRepository og at dette
+    objektet inneholder riktig informasjon for navn og runtime. Dermed vil testen nå bare avhenge av koden som er
+    direkte innehold i MovieDescriber sin metode, describeMovie().
      */
     @Test
     @DisplayName("Describe movie")
     public void describeMovie() {
 
+        //Arrange
         MovieDescriber movieDescriber = new MovieDescriber(mockMovieRepo);
         Mockito.when(mockMovieRepo.getMovieByTitle("Fight Club")).thenReturn(mockMovie);
         Mockito.when(mockMovie.getTitle()).thenReturn("Fight Club");
         Mockito.when(mockMovie.getRuntimeInMinutes()).thenReturn(139);
 
+        //Act
         String result = movieDescriber.describeMovie("Fight Club");
 
+        //Assert
         String expected = "The movie Fight Club has a runtime of 139 minutes.";
         Assertions.assertEquals(expected, result);
 
     }
 
     /*
-    
+    Her tester vi tilfellet hvor vi forsøker å beskrive en film som ikke eksisterer. Altså vil vi her gjøre en antagelse
+    om at MovieRepository ikke finner filmen vi spesifiserer og dermed ikke returnerer noe Movie-objekt. Dermed
+    benytter vi en mock av MovieRepository til å stubbe getMovieByTitle() til å alltid returnere null (nå er dette
+    egentlig standardverdien for mocken, men vi burde fremdeles spesifisere dette for å gjøre testen forståelig).
+    Med denne antagelsen kan vi trygt teste at vi får riktig beskrivelse når en film ikke eksisterer.
      */
     @Test
     @DisplayName("Describe movie not found")
     public void describeMovieNotFound() {
+        //Arrange
         MovieDescriber movieDescriber = new MovieDescriber(mockMovieRepo);
-        Mockito.when(movieDescriber.describeMovie(Mockito.anyString())).thenReturn(null);
+        Mockito.when(mockMovieRepo.getMovieByTitle(Mockito.anyString())).thenReturn(null);
 
+        //Act
         String result = movieDescriber.describeMovie("Bingus");
 
+        //Assert
         Assertions.assertEquals("The movie could not be found.", result);
     }
 
