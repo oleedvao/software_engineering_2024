@@ -42,7 +42,8 @@ public class MovieDescriberTests {
     mockMovie.getRunTimeInMinutes(), som alle blir kalt som en del av enheten vi tester (movieDescriber.describeMovie())
     På den måten antar vi både at movieDescriber-objektet får et gyldig Movie-objekt fra MovieRepository og at dette
     objektet inneholder riktig informasjon for navn og runtime. Dermed vil testen nå bare avhenge av koden som er
-    direkte innehold i MovieDescriber sin metode, describeMovie().
+    direkte innehold i MovieDescriber sin metode, describeMovie() og vi kan trygt si at enheten funker når den får et
+    Movie-objekt å beskrive.
      */
     @Test
     @DisplayName("Describe movie")
