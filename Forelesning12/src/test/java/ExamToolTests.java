@@ -16,8 +16,10 @@ public class ExamToolTests {
                 "A", "B", "B", "A", "C", "D", "A");
 
         int countA = ExamTool.countGradeInList("A", grades);
+        int countB = ExamTool.countGradeInList("B", grades);
 
         Assertions.assertEquals(3, countA);
+        Assertions.assertEquals(2, countB);
 
     }
 
