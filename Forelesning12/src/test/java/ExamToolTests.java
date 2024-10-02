@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class ExamToolTests {
 
     @Test
@@ -21,16 +23,30 @@ public class ExamToolTests {
         int countA = ExamTool.countGradeInList("A", grades);
         int countB = ExamTool.countGradeInList("B", grades);
         int countC = ExamTool.countGradeInList("C", grades);
-        // ...
+        int countD = ExamTool.countGradeInList("D", grades);
+        int countE = ExamTool.countGradeInList("E", grades);
+        int countF = ExamTool.countGradeInList("F", grades);
 
         int countA2 = ExamTool.countGradeInList("A", grades2);
+        int countB2 = ExamTool.countGradeInList("B", grades2);
+        int countC2 = ExamTool.countGradeInList("C", grades2);
+        int countD2 = ExamTool.countGradeInList("D", grades2);
+        int countE2 = ExamTool.countGradeInList("E", grades2);
+        int countF2 = ExamTool.countGradeInList("F", grades2);
 
-        Assertions.assertEquals(3, countA);
-        Assertions.assertEquals(2, countB);
-        Assertions.assertEquals(1, countC);
-        //...
+        assertEquals(3, countA);
+        assertEquals(2, countB);
+        assertEquals(1, countC);
+        assertEquals(1, countD);
+        assertEquals(0, countE);
+        assertEquals(0, countF);
 
-        Assertions.assertEquals(1, countA2);
+        assertEquals(1, countA2);
+        assertEquals(1, countB2);
+        assertEquals(2, countC2);
+        assertEquals(2, countD2);
+        assertEquals(0, countE2);
+        assertEquals(0, countF2);
 
     }
 
