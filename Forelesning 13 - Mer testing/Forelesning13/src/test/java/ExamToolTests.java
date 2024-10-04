@@ -1,10 +1,15 @@
+import net.bytebuddy.asm.MemberSubstitution;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,10 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ExamToolTests {
 
-    @Test
-    @DisplayName("Grade exam submission")
-    public void gradeExamSubmission() {
-
+    private static Stream<Arguments> gradeExamSubmissionParameters() {
         ExamSubmission examSubmissionA = mock(ExamSubmission.class);
         when(examSubmissionA.getTotalPoints()).thenReturn(95);
         ExamSubmission examSubmissionA2 = mock(ExamSubmission.class);
@@ -26,18 +28,27 @@ public class ExamToolTests {
 
         ExamSubmission examSubmissionB = mock(ExamSubmission.class);
         when(examSubmissionB.getTotalPoints()).thenReturn(89);
+        ExamSubmission examSubmissionB2 = mock(ExamSubmission.class);
+        when(examSubmissionB2.getTotalPoints()).thenReturn(80);
 
-        String grade = ExamTool.gradeExamSubmission(examSubmissionA);
-        String grade2 = ExamTool.gradeExamSubmission(examSubmissionA2);
-        String grade3 = ExamTool.gradeExamSubmission(examSubmissionA3);
+        return Stream.of(
+                Arguments.of(examSubmissionA, "A"),
+                Arguments.of(examSubmissionA2, "A"),
+                Arguments.of(examSubmissionA3, "A"),
+                Arguments.of(examSubmissionB, "B"),
+                Arguments.of(examSubmissionB2, "B")
+        );
+    }
 
-        String grade4 = ExamTool.gradeExamSubmission(examSubmissionB);
+    @ParameterizedTest(name = "Exam is graded {1}")
+    @MethodSource("gradeExamSubmissionParameters")
+    @DisplayName("Grade exam submission")
+    public void gradeExamSubmission(ExamSubmission examSubmission, String expectedGrade) {
 
-        assertEquals("A", grade);
-        assertEquals("A", grade2);
-        assertEquals("A", grade3);
+        String actualGrade = ExamTool.gradeExamSubmission(examSubmission);
 
-        assertEquals("B", grade4);
+
+        assertEquals(expectedGrade, actualGrade);
 
     }
 
