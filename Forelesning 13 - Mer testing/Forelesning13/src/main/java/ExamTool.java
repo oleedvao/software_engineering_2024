@@ -8,6 +8,9 @@ public abstract class ExamTool {
         if (examSubmission.getTotalPoints() >= 90) {
             return "A";
         }
+        else if (examSubmission.getTotalPoints() >= 80) {
+            return "B";
+        }
         return "F";
     }
 
