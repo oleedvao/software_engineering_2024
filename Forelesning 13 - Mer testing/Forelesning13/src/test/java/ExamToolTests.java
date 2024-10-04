@@ -1,35 +1,29 @@
-import net.bytebuddy.asm.MemberSubstitution;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ExamToolTests {
 
     /*
-    Denne metoden samler "parameterene" til testen gradeExamSubmission().
-    Det som samles som parametere er typisk det som skal testes (verdi, objekt e.l.) og tilhørende forventet resultat,
+    Denne metoden samler "argumentene" til testen gradeExamSubmission().
+    Det som samles som argumenter er typisk det som skal testes (verdi, objekt e.l.) og tilhørende forventet resultat,
     altså de forskjellige test-scenariene. Her gjelder dette et ExamSubmission-objekt og en tiltenkt karakter.
     Det er også vanlig å samle resten av det som hører til "Arrange" delen av testen her, slik som opprettelse av
     objekter eller mock-objekter.
-    Merk at vi også kan sende med verdier i parameteren som ikke direkte er påkrevd av testen, men som hjelper med å
+    Merk at vi også kan sende med verdier i argumentene som ikke direkte er påkrevd av testen, men som hjelper med å
     tilpasse output per scenario. Her sender vi for eksempel med poengene for det gjeldende ExamSubmission-objektet
     men hensikt å benytte dette for å definere output per scenario.
      */
-    private static Stream<Arguments> gradeExamSubmissionParameters() {
+    private static Stream<Arguments> gradeExamSubmissionArguments() {
         // Arrange (her mock-objektene som benyttes i testen)
         ExamSubmission examSubmissionA = mock(ExamSubmission.class);
         when(examSubmissionA.getTotalPoints()).thenReturn(95);
@@ -56,21 +50,21 @@ public class ExamToolTests {
     }
 
     /*
-    Dette er en parameterisert test, som betyr at testen tar imot generelle parametere som den skal håndtere.
-    Parametereiserte tester benyttes typisk til å definere test-logikken generelt, mens verdier for konkrete
+    Dette er en parameterisert test, som betyr at testen tar imot argumenter for generelle parametere som den skal
+    håndtere. Parametereiserte tester benyttes typisk til å definere test-logikken generelt, mens verdier for konkrete
     test-scenarier blir tatt imot som parametere.
     For at en test skal tolkes av JUnit som en parameterisert test, må vi benytte @ParameterizedTest, og eventuelt
     definere et "name", som bestemmer hvordan outputen vil bli for hvert scenarie.
         Merk at vi for name refererer til test-metoden sine parametere ved bruk av indexer. Under referer for eksempel
         {0} til examSubmission-parameteren, {1} til expectedGrade-parameteren og {2} til totalPoints-parameteren.
-    Vi må også definere en @MethodSource som spesifiserer navnet på Parameter metoden. Altså hvor parameterene skal
-    komme fra. Dette vil i praksis medføre at JUnit kjørerer testen for alle "argumentene" definert i
-    test-parameter-metoden. Men for å kunne ta nytte av verdiene som kommer fra dette, må vi også definere parametere
+    Vi må også definere en @MethodSource som spesifiserer navnet på argument-metoden. Altså hvor parameterene skal
+    komme fra. Dette vil i praksis medføre at JUnit kjørerer testen for alle argumentene definert i
+    argument-metoden. Men for å kunne ta nytte av verdiene som kommer fra dette, må vi også definere parametere
     i selve test-metoden som representerer disse. Parameterene examSubmission, expectedGrade og totalPoints er altså
-    generelle referanse til de verdiene som kommer fra test-parameter-metoden gradeExamSumbissionParameters().
+    generelle referanse til de verdiene som kommer fra test-parameter-metoden gradeExamSumbissionArugments().
      */
     @ParameterizedTest(name = "Exam with {2} points is graded {1}")
-    @MethodSource("gradeExamSubmissionParameters")
+    @MethodSource("gradeExamSubmissionArguments")
     @DisplayName("Grade exam submission")
     public void gradeExamSubmission(ExamSubmission examSubmission, String expectedGrade, int totalPoints) {
 
@@ -85,11 +79,11 @@ public class ExamToolTests {
 
 
     /*
-    Parametere for testen countGradeInList().
+    Argumenter for testen countGradeInList().
     Definerer listene som skal testes for og alle scenariene som testes (karakter som skal telles, listen den skal
     telles i, og forventet antall fra tellingen.
      */
-    private static Stream<Arguments> countGradeInListParameters() {
+    private static Stream<Arguments> countGradeInListArguments() {
         //Arrange
         ArrayList<String> grades = new ArrayList<>();
         Collections.addAll(grades,
@@ -120,7 +114,7 @@ public class ExamToolTests {
     og tilpasses dynamisk for alle argumentene som kommer fra countGradeInListParameters
      */
     @ParameterizedTest(name = "Count of grade {0} is {2} for list {1}")
-    @MethodSource("countGradeInListParameters")
+    @MethodSource("countGradeInListArguments")
     @DisplayName("Count grade in list of grades")
     public void countGradeInList(String grade, ArrayList<String> gradesList, int expectedCount) {
 
