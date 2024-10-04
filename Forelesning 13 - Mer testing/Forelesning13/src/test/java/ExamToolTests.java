@@ -21,12 +21,23 @@ public class ExamToolTests {
         when(examSubmissionA.getTotalPoints()).thenReturn(95);
         ExamSubmission examSubmissionA2 = mock(ExamSubmission.class);
         when(examSubmissionA2.getTotalPoints()).thenReturn(90);
+        ExamSubmission examSubmissionA3 = mock(ExamSubmission.class);
+        when(examSubmissionA3.getTotalPoints()).thenReturn(100);
+
+        ExamSubmission examSubmissionB = mock(ExamSubmission.class);
+        when(examSubmissionB.getTotalPoints()).thenReturn(89);
 
         String grade = ExamTool.gradeExamSubmission(examSubmissionA);
         String grade2 = ExamTool.gradeExamSubmission(examSubmissionA2);
+        String grade3 = ExamTool.gradeExamSubmission(examSubmissionA3);
+
+        String grade4 = ExamTool.gradeExamSubmission(examSubmissionB);
 
         assertEquals("A", grade);
         assertEquals("A", grade2);
+        assertEquals("A", grade3);
+
+        assertEquals("B", grade4);
 
     }
 
