@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,6 +30,7 @@ public class ExamToolTests {
     men hensikt å benytte dette for å definere output per scenario.
      */
     private static Stream<Arguments> gradeExamSubmissionParameters() {
+        // Arrange (her mock-objektene som benyttes i testen)
         ExamSubmission examSubmissionA = mock(ExamSubmission.class);
         when(examSubmissionA.getTotalPoints()).thenReturn(95);
         ExamSubmission examSubmissionA2 = mock(ExamSubmission.class);
@@ -41,6 +43,9 @@ public class ExamToolTests {
         ExamSubmission examSubmissionB2 = mock(ExamSubmission.class);
         when(examSubmissionB2.getTotalPoints()).thenReturn(80);
 
+        // "Scenariene" som skal testes returneres som en Stream og Arguments.
+        // Hvert Aruguments.of() definerer her et mock-objekt av ExamSubmission, en forventet karakter for denne og
+        // dens totale poeng
         return Stream.of(
                 Arguments.of(examSubmissionA, "A", examSubmissionA.getTotalPoints()),
                 Arguments.of(examSubmissionA2, "A", examSubmissionA2.getTotalPoints()),
@@ -79,19 +84,12 @@ public class ExamToolTests {
     }
 
 
-
     /*
-    Se commitene navngitt F12 for en stegvis liste med endringer tilsvarende stegene i Test Driven Development (red,
-    green, refactor).
-    Disse stegvise endringene virker kanskje banale og unødvendig små, men banker inn dette med å teste ofte og all
-    koden, samt å ofte tenke på refaktorering for å sørge for at resultatet blir "god kode".
-    Generelt er TDD nyttig i tilfeller hvor man står fast og ikke helt vet hvordan man skal implementere den relevante
-    enheten. I slike tilfeller kan TDD veilede deg i riktig retning ved å gjøre små og overkommelige steg.
+    Parametere for testen countGradeInList().
+    Definerer listene som skal testes for og alle scenariene som testes (karakter som skal telles, listen den skal
+    telles i, og forventet antall fra tellingen.
      */
-    @Test
-    @DisplayName("Count grade in list of grades")
-    public void countGradeInList() {
-
+    private static Stream<Arguments> countGradeInListParameters() {
         //Arrange
         ArrayList<String> grades = new ArrayList<>();
         Collections.addAll(grades,
@@ -100,35 +98,37 @@ public class ExamToolTests {
         Collections.addAll(grades2,
                 "B", "D", "D", "A", "C", "C");
 
-        //Act
-        int countA = ExamTool.countGradeInList("A", grades);
-        int countB = ExamTool.countGradeInList("B", grades);
-        int countC = ExamTool.countGradeInList("C", grades);
-        int countD = ExamTool.countGradeInList("D", grades);
-        int countE = ExamTool.countGradeInList("E", grades);
-        int countF = ExamTool.countGradeInList("F", grades);
+        return Stream.of(
+                Arguments.of("A", grades, 3),
+                Arguments.of("B", grades, 2),
+                Arguments.of("C", grades, 1),
+                Arguments.of("D", grades, 1),
+                Arguments.of("E", grades, 0),
+                Arguments.of("F", grades, 0),
 
-        int countA2 = ExamTool.countGradeInList("A", grades2);
-        int countB2 = ExamTool.countGradeInList("B", grades2);
-        int countC2 = ExamTool.countGradeInList("C", grades2);
-        int countD2 = ExamTool.countGradeInList("D", grades2);
-        int countE2 = ExamTool.countGradeInList("E", grades2);
-        int countF2 = ExamTool.countGradeInList("F", grades2);
+                Arguments.of("A", grades2, 1),
+                Arguments.of("B", grades2, 1),
+                Arguments.of("C", grades2, 2),
+                Arguments.of("D", grades2, 2),
+                Arguments.of("E", grades2, 0),
+                Arguments.of("F", grades2, 0)
+        );
+    }
+
+    /*
+    Parameterisert test for å telle karakter i en liste med karakterer. Merk at denne er veldig generelt definert
+    og tilpasses dynamisk for alle argumentene som kommer fra countGradeInListParameters
+     */
+    @ParameterizedTest(name = "Count of grade {0} is {2} for list {1}")
+    @MethodSource("countGradeInListParameters")
+    @DisplayName("Count grade in list of grades")
+    public void countGradeInList(String grade, ArrayList<String> gradesList, int expectedCount) {
+
+        //Act
+        int actualCount = ExamTool.countGradeInList(grade, gradesList);
 
         //Assert
-        assertEquals(3, countA);
-        assertEquals(2, countB);
-        assertEquals(1, countC);
-        assertEquals(1, countD);
-        assertEquals(0, countE);
-        assertEquals(0, countF);
-
-        assertEquals(1, countA2);
-        assertEquals(1, countB2);
-        assertEquals(2, countC2);
-        assertEquals(2, countD2);
-        assertEquals(0, countE2);
-        assertEquals(0, countF2);
+        assertEquals(expectedCount, actualCount);
 
     }
 
