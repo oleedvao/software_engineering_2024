@@ -92,6 +92,7 @@ public class ExamToolTests {
         Collections.addAll(grades2,
                 "B", "D", "D", "A", "C", "C");
 
+        // Scenariene som testes. Karakter som skal telles, listen den skal telles i og forventet antall fra tellingen.
         return Stream.of(
                 Arguments.of("A", grades, 3),
                 Arguments.of("B", grades, 2),
