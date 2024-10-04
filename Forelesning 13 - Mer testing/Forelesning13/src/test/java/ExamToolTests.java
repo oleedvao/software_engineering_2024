@@ -19,10 +19,14 @@ public class ExamToolTests {
 
         ExamSubmission examSubmissionA = mock(ExamSubmission.class);
         when(examSubmissionA.getTotalPoints()).thenReturn(95);
+        ExamSubmission examSubmissionA2 = mock(ExamSubmission.class);
+        when(examSubmissionA2.getTotalPoints()).thenReturn(90);
 
         String grade = ExamTool.gradeExamSubmission(examSubmissionA);
+        String grade2 = ExamTool.gradeExamSubmission(examSubmissionA2);
 
         assertEquals("A", grade);
+        assertEquals("A", grade2);
 
     }
 
