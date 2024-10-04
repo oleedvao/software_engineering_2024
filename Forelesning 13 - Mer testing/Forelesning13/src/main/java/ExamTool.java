@@ -2,6 +2,15 @@ import java.util.ArrayList;
 
 public abstract class ExamTool {
 
+
+
+    public static String gradeExamSubmission(ExamSubmission examSubmission) {
+        if (examSubmission.getTotalPoints() >= 90) {
+            return "A";
+        }
+        return "F";
+    }
+
     /*
     Denne enheten er fullstendig skrevet ut ifra TDD.
     Merk at den ikke ble definert til å kunne generelt håndtere telling av flere unike lister før testene uttrykte et
@@ -14,4 +23,6 @@ public abstract class ExamTool {
         }
         return count;
     }
+
+
 }

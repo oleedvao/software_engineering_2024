@@ -1,12 +1,32 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class ExamToolTests {
+
+    @Test
+    @DisplayName("Grade exam submission")
+    public void gradeExamSubmission() {
+
+        ExamSubmission examSubmissionA = mock(ExamSubmission.class);
+        when(examSubmissionA.getTotalPoints()).thenReturn(95);
+
+        String grade = ExamTool.gradeExamSubmission(examSubmissionA);
+
+        assertEquals("A", grade);
+
+    }
+
+
 
     /*
     Se commitene navngitt F12 for en stegvis liste med endringer tilsvarende stegene i Test Driven Development (red,
