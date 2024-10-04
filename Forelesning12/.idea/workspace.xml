@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f58cf450-be23-47ef-aa14-3018ee327532" name="Changes" comment="F12 - 11 - refactor" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2msGv9n2oAqIqt6smskVEFSI8vi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.ExamToolTests.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f58cf450-be23-47ef-aa14-3018ee327532" name="Changes" comment="" />
+      <created>1727858097747</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727858097747</updated>
+      <workItem from="1727858098789" duration="4273000" />
+      <workItem from="1728022472835" duration="736000" />
+    </task>
+    <task id="LOCAL−00001" summary="F12 - 0 - Created project">
+      <option name="closed" value="true" />
+      <created>1727858256152</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1727858256152</updated>
+    </task>
+    <task id="LOCAL−00002" summary="F12 - 1 - red">
+      <option name="closed" value="true" />
+      <created>1727858611078</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1727858611078</updated>
+    </task>
+    <task id="LOCAL−00003" summary="F12 - 2 - green">
+      <option name="closed" value="true" />
+      <created>1727858781222</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1727858781222</updated>
+    </task>
+    <task id="LOCAL−00004" summary="F12 - 3 - refactor">
+      <option name="closed" value="true" />
+      <created>1727858984943</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1727858984943</updated>
+    </task>
+    <task id="LOCAL−00005" summary="F12 - 4 - red">
+      <option name="closed" value="true" />
+      <created>1727859101451</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1727859101452</updated>
+    </task>
+    <task id="LOCAL−00006" summary="F12 - 5 - green">
+      <option name="closed" value="true" />
+      <created>1727859211084</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1727859211084</updated>
+    </task>
+    <task id="LOCAL−00007" summary="F12 - 6 - refactor">
+      <option name="closed" value="true" />
+      <created>1727859382028</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1727859382028</updated>
+    </task>
+    <task id="LOCAL−00008" summary="F12 - 7 - red">
+      <option name="closed" value="true" />
+      <created>1727859472316</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1727859472316</updated>
+    </task>
+    <task id="LOCAL−00009" summary="F12 - 8 - green">
+      <option name="closed" value="true" />
+      <created>1727859534708</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1727859534708</updated>
+    </task>
+    <task id="LOCAL−00010" summary="F12 - 9 - red">
+      <option name="closed" value="true" />
+      <created>1727859741315</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1727859741315</updated>
+    </task>
+    <task id="LOCAL−00011" summary="F12 - 10 - green">
+      <option name="closed" value="true" />
+      <created>1727860903602</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1727860903602</updated>
+    </task>
+    <task id="LOCAL−00012" summary="F12 - 11 - refactor">
+      <option name="closed" value="true" />
+      <created>1727861147934</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1727861147934</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="F12 - 0 - Created project" />
+    <MESSAGE value="F12 - 1 - red" />
+    <MESSAGE value="F12 - 2 - green" />
+    <MESSAGE value="F12 - 3 - refactor" />
+    <MESSAGE value="F12 - 4 - red" />
+    <MESSAGE value="F12 - 5 - green" />
+    <MESSAGE value="F12 - 6 - refactor" />
+    <MESSAGE value="F12 - 7 - red" />
+    <MESSAGE value="F12 - 8 - green" />
+    <MESSAGE value="F12 - 9 - red" />
+    <MESSAGE value="F12 - 10 - green" />
+    <MESSAGE value="F12 - 11 - refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="F12 - 11 - refactor" />
+  </component>
+</project>
