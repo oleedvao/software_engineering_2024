@@ -18,6 +18,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ExamToolTests {
 
+    /*
+    Denne metoden samler "parameterene" til testen gradeExamSubmission().
+    Det som samles som parametere er typisk det som skal testes (verdi, objekt e.l.) og tilhørende forventet resultat,
+    altså de forskjellige test-scenariene. Her gjelder dette et ExamSubmission-objekt og en tiltenkt karakter.
+    Det er også vanlig å samle resten av det som hører til "Arrange" delen av testen her, slik som opprettelse av
+    objekter eller mock-objekter.
+    Merk at vi også kan sende med verdier i parameteren som ikke direkte er påkrevd av testen, men som hjelper med å
+    tilpasse output per scenario. Her sender vi for eksempel med poengene for det gjeldende ExamSubmission-objektet
+    men hensikt å benytte dette for å definere output per scenario.
+     */
     private static Stream<Arguments> gradeExamSubmissionParameters() {
         ExamSubmission examSubmissionA = mock(ExamSubmission.class);
         when(examSubmissionA.getTotalPoints()).thenReturn(95);
@@ -32,22 +42,38 @@ public class ExamToolTests {
         when(examSubmissionB2.getTotalPoints()).thenReturn(80);
 
         return Stream.of(
-                Arguments.of(examSubmissionA, "A"),
-                Arguments.of(examSubmissionA2, "A"),
-                Arguments.of(examSubmissionA3, "A"),
-                Arguments.of(examSubmissionB, "B"),
-                Arguments.of(examSubmissionB2, "B")
+                Arguments.of(examSubmissionA, "A", examSubmissionA.getTotalPoints()),
+                Arguments.of(examSubmissionA2, "A", examSubmissionA2.getTotalPoints()),
+                Arguments.of(examSubmissionA3, "A", examSubmissionA3.getTotalPoints()),
+                Arguments.of(examSubmissionB, "B", examSubmissionB.getTotalPoints()),
+                Arguments.of(examSubmissionB2, "B", examSubmissionB2.getTotalPoints())
         );
     }
 
-    @ParameterizedTest(name = "Exam is graded {1}")
+    /*
+    Dette er en parameterisert test, som betyr at testen tar imot generelle parametere som den skal håndtere.
+    Parametereiserte tester benyttes typisk til å definere test-logikken generelt, mens verdier for konkrete
+    test-scenarier blir tatt imot som parametere.
+    For at en test skal tolkes av JUnit som en parameterisert test, må vi benytte @ParameterizedTest, og eventuelt
+    definere et "name", som bestemmer hvordan outputen vil bli for hvert scenarie.
+        Merk at vi for name refererer til test-metoden sine parametere ved bruk av indexer. Under referer for eksempel
+        {0} til examSubmission-parameteren, {1} til expectedGrade-parameteren og {2} til totalPoints-parameteren.
+    Vi må også definere en @MethodSource som spesifiserer navnet på Parameter metoden. Altså hvor parameterene skal
+    komme fra. Dette vil i praksis medføre at JUnit kjørerer testen for alle "argumentene" definert i
+    test-parameter-metoden. Men for å kunne ta nytte av verdiene som kommer fra dette, må vi også definere parametere
+    i selve test-metoden som representerer disse. Parameterene examSubmission, expectedGrade og totalPoints er altså
+    generelle referanse til de verdiene som kommer fra test-parameter-metoden gradeExamSumbissionParameters().
+     */
+    @ParameterizedTest(name = "Exam with {2} points is graded {1}")
     @MethodSource("gradeExamSubmissionParameters")
     @DisplayName("Grade exam submission")
-    public void gradeExamSubmission(ExamSubmission examSubmission, String expectedGrade) {
+    public void gradeExamSubmission(ExamSubmission examSubmission, String expectedGrade, int totalPoints) {
 
+        // Act er her definert én gang og vil dynamisk gjøre det samme for alle examSubmission-objekter som blir testet.
         String actualGrade = ExamTool.gradeExamSubmission(examSubmission);
 
-
+        // Assert er her definert én gang og vil dynamisk kontrollere at karakteren blir riktig (expectedGrade) for
+        // hver beregning.
         assertEquals(expectedGrade, actualGrade);
 
     }
