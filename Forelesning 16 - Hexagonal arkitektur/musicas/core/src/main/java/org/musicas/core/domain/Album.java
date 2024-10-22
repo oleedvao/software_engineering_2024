@@ -10,6 +10,10 @@ public class Album extends Music{
         super(title, artist);
     }
 
+    public void addSong(Song song) {
+        songs.add(song);
+    }
+
     public ArrayList<Song> getSongs() {
         return new ArrayList<>(songs);
     }

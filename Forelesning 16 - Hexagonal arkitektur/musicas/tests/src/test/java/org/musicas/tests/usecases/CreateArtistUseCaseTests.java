@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.musicas.core.domain.Artist;
-import org.musicas.core.dto.CreateArtistDTO;
+import org.musicas.core.dto.usecase.CreateArtistUseCaseDTO;
 import org.musicas.core.port.MusicRepository;
 import org.musicas.core.usecase.CreateArtistUseCase;
 
@@ -28,7 +28,7 @@ public class CreateArtistUseCaseTests {
     public void createArtistSuccess() {
         //Arrange
         CreateArtistUseCase createArtistUseCase = new CreateArtistUseCase(mockMusicRepository);
-        CreateArtistDTO dto = new CreateArtistDTO("Radiohead");
+        CreateArtistUseCaseDTO dto = new CreateArtistUseCaseDTO("Radiohead");
 
         //Act
         createArtistUseCase.execute(dto);

@@ -1,7 +1,7 @@
 package org.musicas.core.usecase;
 
 import org.musicas.core.domain.Artist;
-import org.musicas.core.dto.CreateArtistDTO;
+import org.musicas.core.dto.usecase.CreateArtistUseCaseDTO;
 import org.musicas.core.port.MusicRepository;
 
 /*
@@ -31,7 +31,7 @@ public class CreateArtistUseCase {
         this.musicRepository = musicRepository;
     }
 
-    public void execute(CreateArtistDTO dto) {
+    public void execute(CreateArtistUseCaseDTO dto) {
 
         Artist artist = new Artist(dto.getName());
         musicRepository.createArtist(artist);
