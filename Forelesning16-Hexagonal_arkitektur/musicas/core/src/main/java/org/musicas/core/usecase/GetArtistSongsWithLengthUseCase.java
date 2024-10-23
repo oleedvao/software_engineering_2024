@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class GetArtistSongsWithLengthUseCase {
 
-    private MusicRepository musicRepository;
+    private MusicRepository mockMusicRepository;
 
-    public GetArtistSongsWithLengthUseCase(MusicRepository musicRepository) {
-        this.musicRepository = musicRepository;
+    public GetArtistSongsWithLengthUseCase(MusicRepository mockMusicRepository) {
+        this.mockMusicRepository = mockMusicRepository;
     }
 
     /**
@@ -26,7 +26,7 @@ public class GetArtistSongsWithLengthUseCase {
      * @return ArtistSongsWithLenghtDTO containing a list of the songs with at least the specified length.
      */
     public ArtistSongsWithLengthDTO execute(GetArtistSongsWithLengthUseCaseDTO dto) {
-        ArrayList<Album> albumsByArtist = musicRepository.getAlbumsByArtist(dto.getArtistId());
+        ArrayList<Album> albumsByArtist = mockMusicRepository.getAlbumsByArtist(dto.getArtistId());
 
         ArrayList<Song> songsWithLength = new ArrayList<>();
 
