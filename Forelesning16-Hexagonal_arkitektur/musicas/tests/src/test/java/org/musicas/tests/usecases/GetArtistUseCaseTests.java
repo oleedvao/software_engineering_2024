@@ -42,7 +42,7 @@ public class GetArtistUseCaseTests {
         ArtistDTO result = getArtist.execute(dto);
 
         // Assert
-        assertEquals("Radiohead", result.getName());
+        assertEquals("Radiohead1", result.getName());
         assertEquals(1, result.getAlbums().size());
         assertEquals("In Rainbows", result.getAlbums().get(0).getTitle());
     }
