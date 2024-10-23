@@ -29,5 +29,5 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: |
-        cd Forelesning 16 - Hexagonal arkitektur/musicas
+        cd Forelesning16-Hexagonal_arkitektur/musicas
         mvn --batch-mode --update-snapshots verify
